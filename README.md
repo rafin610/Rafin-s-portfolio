@@ -1,20 +1,70 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Ahmed Rafin
 
-# Run and deploy your AI Studio app
+### Modern web experiences crafted for growth, clarity, and impact.
 
-This contains everything you need to run your app locally.
+---
 
-View your app in AI Studio: https://ai.studio/apps/dd81ecfa-32a5-434e-a179-eb7a5608647c
+## About Me
 
-## Run Locally
+I am Ahmed Rafin, a passionate developer and technology enthusiast from Bangladesh. I build clean, responsive web projects that focus on performance, usability, and polished interactions.
 
-**Prerequisites:**  Node.js
+- 🌍 Based in Bangladesh
+- 💡 Focus on modern UI/UX
+- 🚀 Driven by continuous learning and real-world projects
 
+---
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Featured Projects
+
+> Showcase your best work with clarity and confidence.
+
+- **Project One** – A modern interface for a professional web experience.
+- **Project Two** – A responsive app built for seamless mobile and desktop use.
+- **Project Three** – An interactive UI that combines design and performance.
+
+> Placeholder text can be updated as new projects are launched.
+
+---
+
+## Tech Stack
+
+- HTML
+- CSS
+- JavaScript
+- React
+- Tailwind CSS
+- Git
+- GitHub
+
+---
+
+## Features
+
+- Modern minimalist design
+- Fully responsive layout
+- Smooth animations
+- Interactive user experience
+- Mobile-friendly design
+
+---
+
+## Live Portfolio
+
+Explore the live website:
+
+[Live Portfolio](https://example.com)
+
+> Replace the placeholder link with the actual site URL.
+
+---
+
+## Contact
+
+- Email: ahmedrafin014@gmail.com
+- WhatsApp: 01629221285
+
+---
+
+## Footer
+
+Built by **Ahmed Rafin** — clean, modern, and developer-focused.
