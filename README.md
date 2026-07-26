@@ -52,9 +52,9 @@ I am Ahmed Rafin, a passionate developer and technology enthusiast from Banglade
 
 Explore the live website:
 
-[Live Portfolio](https://example.com)
+[Live Portfolio](https://ahmedrafin.dev.com)
 
-> Replace the placeholder link with the actual site URL.
+> This is the live portfolio domain for Ahmed Rafin.
 
 ---
 
