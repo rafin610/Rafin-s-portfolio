@@ -13,8 +13,8 @@ export const PERSONAL_INFO = {
   discord: "rafin#0001",
   bio: "A Bangladeshi student, developer, creative technologist, product thinker, gamer, and future entrepreneur. Passionate about turning raw curiosity into elegant digital products that make an impact.",
   quote: "I don't just want to use technology. I want to understand it, build with it, and eventually create something meaningful of my own.",
-  portraitPath: "/src/assets/images/ahmed_rafin_real_portrait_1785078265376.jpg",
-  orbPath: "/src/assets/images/abstract_orb_sphere_1785077491599.jpg"
+  portraitPath: new URL("../assets/images/ahmed_rafin_real_portrait_1785078265376.jpg", import.meta.url).href,
+  orbPath: new URL("../assets/images/abstract_orb_sphere_1785077491599.jpg", import.meta.url).href
 };
 
 export const PROJECTS: Project[] = [
@@ -28,7 +28,7 @@ export const PROJECTS: Project[] = [
     status: "Interactive Prototype",
     color: "from-blue-500/20 to-indigo-500/10",
     category: "Audio Technology",
-    featuredVisual: "/src/assets/images/regenerated_image_1785078943872.png",
+    featuredVisual: new URL("../assets/images/regenerated_image_1785078943872.png", import.meta.url).href,
     fullOverview: "BeatFlow was built out of frustration with cluttered streaming interfaces. It presents a distraction-free digital soundscape where audio playback reactive visuals match the pulse of the song.",
     keyFeatures: [
       "Custom Web Audio API frequency visualizer with real-time spectrum analysis",
