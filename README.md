@@ -52,7 +52,8 @@ I am Ahmed Rafin, a passionate developer and technology enthusiast from Banglade
 
 Explore the live website:
 
-[Live Portfolio](https://ahmedrafin.dev.com)
+[Live Portfolio](https://earnest-paprenjak-08a663.netlify.app/)
+[Live Portfolio](https://earnest-paprenjak-08a663.netlify.app/s)
 
 > This is the live portfolio domain for Ahmed Rafin.
 
