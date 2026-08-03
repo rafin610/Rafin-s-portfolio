@@ -21,26 +21,24 @@ export const ContactSection: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="relative py-32 px-6 md:px-16 max-w-[1400px] mx-auto z-10">
-
+    <section id="contact" className="relative z-10 mx-auto max-w-[1400px] px-6 py-32 md:px-16">
       <motion.span
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="label-text text-[#444] mb-20 block"
+        className="label-text mb-20 block text-[#6d7483]"
       >
         08 / Contact
       </motion.span>
 
-      {/* Big CTA headline */}
-      <div className="mb-24">
-        <div className="overflow-hidden mb-2">
+      <div className="mb-16 sm:mb-24">
+        <div className="mb-2 overflow-hidden">
           <motion.h2
             initial={{ y: '100%' }}
             whileInView={{ y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-serif text-[clamp(44px,8vw,110px)] text-white leading-[0.95] tracking-[-0.03em]"
+            className="font-serif text-[clamp(40px,7.5vw,108px)] leading-[0.95] tracking-[-0.03em] text-white"
           >
             Have an idea?
           </motion.h2>
@@ -51,7 +49,7 @@ export const ContactSection: React.FC = () => {
             whileInView={{ y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.1, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-            className="font-serif text-[clamp(44px,8vw,110px)] italic leading-[0.95] tracking-[-0.03em]"
+            className="font-serif text-[clamp(40px,7.5vw,108px)] italic leading-[0.95] tracking-[-0.03em]"
             style={{ color: 'var(--color-accent)' }}
           >
             Let's build it.
@@ -59,91 +57,86 @@ export const ContactSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Contact options */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[rgba(255,255,255,0.05)] rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.06)] mb-16 max-w-3xl"
+        className="mb-16 grid max-w-3xl grid-cols-1 gap-4 md:grid-cols-2"
       >
-        {/* Email */}
-        <div className="bg-[#080808] p-8 flex flex-col gap-6 hover:bg-[rgba(255,255,255,0.02)] transition-colors group">
+        <div className="glass-panel flex flex-col gap-6 rounded-[28px] p-7">
           <div>
-            <span className="label-text text-[#444] block mb-4">Email</span>
+            <span className="label-text mb-4 block text-[#6d7483]">Email</span>
             <a
               href={`mailto:${PERSONAL_INFO.email}`}
               onMouseEnter={() => soundSynth.playHoverPop()}
-              className="text-[17px] text-white font-light hover:text-[var(--color-accent)] transition-colors break-all leading-relaxed block"
+              className="block break-all text-[17px] font-light leading-relaxed text-white transition-colors hover:text-[#8b5cf6]"
             >
               {PERSONAL_INFO.email}
             </a>
           </div>
-          <div className="flex gap-3 mt-auto">
+          <div className="mt-auto flex gap-3">
             <a
               href={`mailto:${PERSONAL_INFO.email}`}
               onMouseEnter={() => soundSynth.playHoverPop()}
-              className="flex-1 py-2.5 rounded-full bg-white text-[#080808] text-[13px] font-medium text-center hover:bg-[var(--color-accent)] transition-colors"
+              className="glass-button flex-1 rounded-full px-4 py-2.5 text-center text-[13px] font-medium text-white"
             >
               Open Email
             </a>
             <button
               onClick={() => handleCopy(PERSONAL_INFO.email, 'email')}
               onMouseEnter={() => soundSynth.playHoverPop()}
-              className="px-4 py-2.5 rounded-full border border-[rgba(255,255,255,0.08)] text-[13px] text-[#666] hover:text-white transition-colors cursor-pointer flex items-center gap-2"
+              className="glass-button flex items-center gap-2 rounded-full px-4 py-2.5 text-[13px] font-medium text-[#dfe3eb]"
             >
-              {copiedEmail ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+              {copiedEmail ? <Check className="h-3.5 w-3.5 text-emerald-400" /> : <Copy className="h-3.5 w-3.5" />}
               {copiedEmail ? 'Copied' : 'Copy'}
             </button>
           </div>
         </div>
 
-        {/* WhatsApp */}
-        <div className="bg-[#080808] p-8 flex flex-col gap-6 hover:bg-[rgba(255,255,255,0.02)] transition-colors group">
+        <div className="glass-panel flex flex-col gap-6 rounded-[28px] p-7">
           <div>
-            <span className="label-text text-[#444] block mb-4">WhatsApp</span>
+            <span className="label-text mb-4 block text-[#6d7483]">WhatsApp</span>
             <a
               href={PERSONAL_INFO.whatsappUrl}
               target="_blank"
               rel="noreferrer"
               onMouseEnter={() => soundSynth.playHoverPop()}
-              className="text-[17px] text-white font-light hover:text-emerald-400 transition-colors block"
+              className="block text-[17px] font-light leading-relaxed text-white transition-colors hover:text-emerald-400"
             >
               {PERSONAL_INFO.whatsapp}
             </a>
           </div>
-          <div className="flex gap-3 mt-auto">
+          <div className="mt-auto flex gap-3">
             <a
               href={PERSONAL_INFO.whatsappUrl}
               target="_blank"
               rel="noreferrer"
               onMouseEnter={() => soundSynth.playHoverPop()}
-              className="flex-1 py-2.5 rounded-full bg-emerald-500 text-[#080808] text-[13px] font-medium text-center hover:bg-emerald-400 transition-colors flex items-center justify-center gap-2"
+              className="glass-button flex flex-1 items-center justify-center gap-2 rounded-full px-4 py-2.5 text-[13px] font-medium text-white"
             >
-              <MessageSquare className="w-3.5 h-3.5" />
+              <MessageSquare className="h-3.5 w-3.5" />
               <span>Chat on WhatsApp</span>
             </a>
             <button
               onClick={() => handleCopy(PERSONAL_INFO.whatsapp, 'phone')}
               onMouseEnter={() => soundSynth.playHoverPop()}
-              className="px-4 py-2.5 rounded-full border border-[rgba(255,255,255,0.08)] text-[13px] text-[#666] hover:text-white transition-colors cursor-pointer flex items-center gap-2"
+              className="glass-button flex items-center gap-2 rounded-full px-4 py-2.5 text-[13px] font-medium text-[#dfe3eb]"
             >
-              {copiedPhone ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+              {copiedPhone ? <Check className="h-3.5 w-3.5 text-emerald-400" /> : <Copy className="h-3.5 w-3.5" />}
               {copiedPhone ? 'Copied' : 'Copy'}
             </button>
           </div>
         </div>
       </motion.div>
 
-      {/* Footer */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pt-12 border-t border-[rgba(255,255,255,0.05)]"
+        className="flex flex-col items-start justify-between gap-8 border-t border-white/10 pt-12 md:flex-row md:items-center"
       >
-        {/* Social links */}
         <div className="flex items-center gap-5">
           {[
             { href: PERSONAL_INFO.github, label: 'GitHub', Icon: Github },
@@ -156,24 +149,21 @@ export const ContactSection: React.FC = () => {
               target="_blank"
               rel="noreferrer"
               onMouseEnter={() => soundSynth.playHoverPop()}
-              className="text-[#444] hover:text-white transition-colors duration-300 cursor-pointer"
+              className="text-[#6d7483] transition-colors duration-300 hover:text-white"
               aria-label={label}
             >
-              <Icon className="w-4 h-4" />
+              <Icon className="h-4 w-4" />
             </a>
           ))}
         </div>
 
-        <div className="text-right">
-          <p className="font-serif text-[15px] text-[#555] italic mb-1">
-            "Still learning. Still building. Still becoming."
-          </p>
-          <p className="label-text text-[#333]">
+        <div className="text-left md:text-right">
+          <p className="mb-1 font-serif text-[15px] italic text-[#c8d0dc]">“Still learning. Still building. Still becoming.”</p>
+          <p className="label-text text-[#6d7483]">
             Designed & Built by Ahmed Rafin · Bangladesh © {new Date().getFullYear()}
           </p>
         </div>
       </motion.div>
-
     </section>
   );
 };

@@ -17,11 +17,10 @@ export default function App() {
   const [showIntro, setShowIntro] = useState<boolean>(true);
   const [activeSection, setActiveSection] = useState<string>('hero');
 
-  // Track active section on scroll
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['hero', 'about', 'journey', 'skills', 'projects', 'ideas', 'growth', 'philosophy', 'contact'];
-      const scrollPos = window.scrollY + 250;
+      const scrollPos = window.scrollY + 260;
 
       for (const sectionId of sections) {
         const element = document.getElementById(sectionId);
@@ -36,27 +35,26 @@ export default function App() {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#080808] text-neutral-100 relative overflow-x-hidden">
-      
-      {/* Intro Experience overlay */}
+    <div className="min-h-screen text-neutral-100 relative overflow-x-hidden">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="hero-orb hero-orb-a" />
+        <div className="hero-orb hero-orb-b" />
+        <div className="hero-orb hero-orb-c" />
+      </div>
+
       <AnimatePresence>
-        {showIntro && (
-          <OpeningIntro onComplete={() => setShowIntro(false)} />
-        )}
+        {showIntro && <OpeningIntro onComplete={() => setShowIntro(false)} />}
       </AnimatePresence>
 
-      {/* Interactive Particle Canvas */}
       <BackgroundCanvas />
-
-      {/* Navigation Bar */}
       <Navbar activeSection={activeSection} />
 
-      {/* Main Experience Body */}
       <main className="relative z-10">
         <HeroSection />
         <AboutSection />
@@ -68,7 +66,6 @@ export default function App() {
         <PhilosophySection />
         <ContactSection />
       </main>
-
     </div>
   );
 }
