@@ -29,12 +29,14 @@ export const OpeningIntro: React.FC<OpeningIntroProps> = ({ onComplete }) => {
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed inset-0 z-50 bg-[#080808] flex items-center justify-center"
+      className="fixed inset-0 z-50 flex items-center justify-center"
+      style={{ backgroundColor: 'var(--bg-primary)' }}
     >
       {/* Skip */}
       <button
         onClick={skipIntro}
-        className="absolute bottom-8 right-8 label-text text-[#444] hover:text-[#888] transition-colors cursor-pointer"
+        className="absolute bottom-8 right-8 label-text transition-colors cursor-pointer"
+        style={{ color: 'var(--text-muted)' }}
       >
         Skip esc
       </button>
@@ -51,8 +53,8 @@ export const OpeningIntro: React.FC<OpeningIntroProps> = ({ onComplete }) => {
             transition={{ duration: 1, ease: 'easeInOut' }}
             className="text-center px-8 max-w-2xl"
           >
-            <p className="font-serif text-[clamp(22px,4vw,44px)] font-normal text-white/80 leading-relaxed tracking-[-0.01em] italic">
-              "A curious mind is always building."
+            <p className="font-serif text-[clamp(22px,4vw,44px)] font-normal leading-relaxed tracking-[-0.01em] italic" style={{ color: 'var(--text-primary)', opacity: 0.8 }}>
+              "I build, face problems, solve them, and improve."
             </p>
           </motion.div>
         )}
@@ -71,28 +73,21 @@ export const OpeningIntro: React.FC<OpeningIntroProps> = ({ onComplete }) => {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="label-text text-[#555] block mb-6"
+              className="label-text block mb-6"
+              style={{ color: 'var(--text-secondary)' }}
             >
-              Identity initialized
+              Self-Taught Developer & AI Builder
             </motion.span>
 
             <motion.h1
               initial={{ opacity: 0, filter: 'blur(12px)', y: 20 }}
               animate={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
               transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="font-serif text-[clamp(48px,11vw,140px)] text-white leading-[0.9] tracking-[-0.03em]"
+              className="font-serif text-[clamp(48px,11vw,140px)] leading-[0.9] tracking-[-0.03em]"
+              style={{ color: 'var(--text-primary)' }}
             >
-              Ahmed <span className="italic" style={{ color: 'var(--color-accent)' }}>Rafin.</span>
+              Ahmed <span className="italic" style={{ color: 'var(--accent-primary)' }}>Rafin.</span>
             </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="mt-8 text-sm text-[#666] font-light"
-            >
-              Developer · Creative Technologist · Product Thinker
-            </motion.p>
           </motion.div>
         )}
 

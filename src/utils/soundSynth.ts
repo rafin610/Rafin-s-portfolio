@@ -12,12 +12,13 @@ class SoundSynth {
   private osc2: OscillatorNode | null = null;
 
   public init() {
-    if (this.ctx) return;
+    if (this.ctx || typeof window === 'undefined') return;
     try {
-      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-      this.ctx = new AudioCtx();
+      const AudioCtor = window.AudioContext ?? (window as typeof window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+      if (!AudioCtor) return;
+      this.ctx = new AudioCtor();
     } catch {
-      console.log("Web Audio API not supported");
+      this.ctx = null;
     }
   }
 

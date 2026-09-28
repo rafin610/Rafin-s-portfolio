@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useTheme } from '../context/ThemeContext';
 
 interface Particle {
   x: number;
@@ -13,6 +14,7 @@ interface Particle {
 }
 
 export const BackgroundCanvas: React.FC = () => {
+  const { theme } = useTheme();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const mouseRef = useRef<{ x: number; y: number; targetX: number; targetY: number }>({
     x: -1000,
@@ -87,11 +89,18 @@ export const BackgroundCanvas: React.FC = () => {
       const mouseX = mouseRef.current.x;
       const mouseY = mouseRef.current.y;
 
-      // Soft warm ambient near cursor
+      // Theme-aware ambient gradient near cursor
       if (mouseX > 0 && mouseY > 0) {
         const gradient = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, 260);
-        gradient.addColorStop(0, 'rgba(232, 213, 183, 0.022)');
-        gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        if (theme === 'midnight') {
+          // Warm ambient for midnight
+          gradient.addColorStop(0, 'rgba(232, 213, 183, 0.022)');
+          gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        } else {
+          // Soft lavender ambient for daylight
+          gradient.addColorStop(0, 'rgba(180, 160, 200, 0.015)');
+          gradient.addColorStop(1, 'rgba(248, 246, 242, 0)');
+        }
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, width, height);
       }
@@ -108,14 +117,18 @@ export const BackgroundCanvas: React.FC = () => {
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
             const lineAlpha = (1 - dist / 100) * 0.05;
-            ctx.strokeStyle = `rgba(255, 255, 255, ${lineAlpha})`;
+            if (theme === 'midnight') {
+              ctx.strokeStyle = `rgba(255, 255, 255, ${lineAlpha})`;
+            } else {
+              ctx.strokeStyle = `rgba(139, 122, 160, ${lineAlpha * 0.7})`;
+            }
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
         }
       }
 
-      // Draw and update particles — neutral, no blue glow
+      // Draw and update particles — theme-aware colors
       particles.forEach((p) => {
         p.x += p.vx;
         p.y += p.vy;
@@ -138,7 +151,11 @@ export const BackgroundCanvas: React.FC = () => {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(200, 200, 200, ${Math.max(0.04, Math.min(0.3, currentAlpha))})`;
+        if (theme === 'midnight') {
+          ctx.fillStyle = `rgba(200, 200, 200, ${Math.max(0.04, Math.min(0.3, currentAlpha))})`;
+        } else {
+          ctx.fillStyle = `rgba(180, 160, 200, ${Math.max(0.03, Math.min(0.2, currentAlpha))})`;
+        }
         ctx.fill();
       });
 
@@ -153,7 +170,7 @@ export const BackgroundCanvas: React.FC = () => {
       window.removeEventListener('touchmove', handleTouchMove);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [theme]);
 
   return (
     <canvas

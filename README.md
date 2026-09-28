@@ -1,71 +1,70 @@
-# Ahmed Rafin
+# Ahmed Rafin — Portfolio
 
-### Modern web experiences crafted for growth, clarity, and impact.
-
----
-
-## About Me
-
-I am Ahmed Rafin, a passionate developer and technology enthusiast from Bangladesh. I build clean, responsive web projects that focus on performance, usability, and polished interactions.
-
-- 🌍 Based in Bangladesh
-- 💡 Focus on modern UI/UX
-- 🚀 Driven by continuous learning and real-world projects
+> **Self-Taught Developer & AI Builder** from Bangladesh.  
+> *"I build web products, explore AI, and learn by turning ideas into real projects."*
 
 ---
 
-## Featured Projects
+## 👨‍💻 About Me
 
-> Showcase your best work with clarity and confidence.
+I am Ahmed Rafin, a self-taught developer from Bangladesh learning through building real products. I focus on web development, AI-assisted workflows, automation, and modern developer tooling. I'm currently studying while actively shipping projects — learning by doing, solving problems as they emerge, and improving along the way.
 
-- **Project One** – A modern interface for a professional web experience.
-- **Project Two** – A responsive app built for seamless mobile and desktop use.
-- **Project Three** – An interactive UI that combines design and performance.
-
-> Placeholder text can be updated as new projects are launched.
-
----
-
-## Tech Stack
-
-- HTML
-- CSS
-- JavaScript
-- React
-- Tailwind CSS
-- Git
-- GitHub
+- 🌍 **Location:** Bangladesh
+- 🎯 **Identity:** Self-Taught Developer & AI Builder
+- 💡 **Philosophy:** *"Learn → Build → Break → Fix → Ship"*
+- 🌐 **Live Portfolio:** [ahmedrafin.netlify.app](https://ahmedrafin.netlify.app/)
 
 ---
 
-## Features
+## 🚀 Featured Projects
 
-- Modern minimalist design
-- Fully responsive layout
-- Smooth animations
-- Interactive user experience
-- Mobile-friendly design
+### 1. [Odhyay](https://odhyay.vercel.app/)
+*Bangla Digital Reading Platform*
+- **Stack:** React, TypeScript, Vite, Tailwind CSS, Supabase, PostgreSQL
+- **Focus:** A calm, accessible reading experience for Bangla readers with book management, author profiles, and reading progress tracking.
+- **Repository:** [github.com/rafin610/odhyay](https://github.com/rafin610/odhyay)
 
----
+### 2. [The DropOut College](https://the-dropout-college.vercel.app/)
+*Community Platform for Self-Driven Learners*
+- **Stack:** Web Platform, Community Building
+- **Focus:** Uniting individuals learning practical skills outside conventional pathways — covering coding, AI, digital creation, and creative technology.
+- **Repository:** [github.com/rafin610/The-dropout-college](https://github.com/rafin610/The-dropout-college)
 
-## Live Portfolio
-
-Explore the live website:
-
-[Live Portfolio](https://ahmedrafin.netlify.app/)
-[Live Portfolio](https://ahmedrafin.netlify.app/)
-
-> This is the live portfolio domain for Ahmed Rafin.
-
----
-
-## Contact
-
-- Email: ahmedrafin014@gmail.com
-- WhatsApp: 01629221285
+### 3. [DropClip](https://github.com/nirobmia-40/DropClip)
+*Lightweight Desktop Video Downloader*
+- **Stack:** Python, Desktop CLI/GUI, GitHub Releases
+- **Focus:** Clean, simple desktop video downloader designed for regular non-technical users.
 
 ---
 
-## Footer
+## 🛠️ Stack & Capabilities
 
-Built by **Ahmed Rafin** — clean, modern, and developer-focused.
+- **Frontend:** HTML5, CSS3, JavaScript (ES6+), React, Vite, Tailwind CSS
+- **Backend & APIs:** Node.js, Express.js, tRPC (Exploring)
+- **Databases:** Supabase, PostgreSQL, Zod
+- **AI & Automation:** AI-assisted Development, Prompt Engineering, Ollama (Local AI), Hugging Face, AI Agents, MCP (Model Context Protocol)
+- **Tools & Workflow:** Git, GitHub, VS Code, Vercel, Linux, PowerShell
+
+---
+
+## 🌟 Portfolio Features
+
+- **Dual-Theme Engine:** Seamless Midnight and Daylight themes with smooth CSS variable transitions.
+- **Interactive Audio Synth:** Subtle harmonic audio feedback using the Web Audio API.
+- **Particle Background:** Custom responsive interactive canvas particles.
+- **Editorial Typography:** Tailored typography combining elegant serif headings and crisp mono metadata.
+- **Responsive Architecture:** Built with React 19, Motion, and Tailwind CSS for mobile, tablet, and desktop viewports.
+
+---
+
+## 📬 Contact & Connect
+
+- **Email:** [ahmedrafin014@gmail.com](mailto:ahmedrafin014@gmail.com)
+- **WhatsApp:** [+880 1629 221285](https://wa.me/8801629221285)
+- **GitHub:** [@rafin610](https://github.com/rafin610)
+- **LinkedIn:** [Ahmed Rafin](https://linkedin.com/in/ahmedrafin)
+- **Twitter/X:** [@ahmedrafin014](https://x.com/ahmedrafin014)
+
+---
+
+*Designed & Built by Ahmed Rafin · Bangladesh*

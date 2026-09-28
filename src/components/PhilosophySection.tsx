@@ -5,11 +5,11 @@ import { soundSynth } from '../utils/soundSynth';
 
 export const PhilosophySection: React.FC = () => {
   const sentences = [
-    "I don't want to only consume technology.",
-    'I want to understand it.',
-    'Build with it.',
-    'And someday…',
-    'Create something that matters.',
+    "I don't wait until I know everything to start building.",
+    "Learn → Build → Break → Fix → Ship.",
+    "Every bug taught me more than any tutorial could.",
+    "Curiosity turns everyday problems into real projects.",
+    "Still learning. Still building. Still becoming.",
   ];
 
   const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -20,67 +20,78 @@ export const PhilosophySection: React.FC = () => {
   };
 
   return (
-    <section id="philosophy" className="relative z-10 mx-auto max-w-[1400px] px-6 py-40 md:px-16">
+    <section id="philosophy" className="relative py-40 px-6 md:px-16 max-w-[1400px] mx-auto z-10">
+
       <motion.span
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="label-text mb-20 block text-[#6d7483]"
+        className="label-text mb-20 block"
+        style={{ color: 'var(--text-muted)' }}
       >
-        07 / Philosophy
+        09 / Philosophy
       </motion.span>
 
       <div className="max-w-4xl">
-        <div className="mb-12 flex items-center gap-2">
+
+        {/* Progress indicator */}
+        <div className="flex items-center gap-2 mb-12">
           {sentences.map((_, idx) => (
             <button
               key={idx}
-              onClick={() => {
-                setActiveIndex(idx);
-                soundSynth.playHoverPop();
-              }}
-              className="cursor-pointer transition-all duration-300"
+              onClick={() => { setActiveIndex(idx); soundSynth.playHoverPop(); }}
+              className="cursor-pointer transition-all duration-300 py-2"
               aria-label={`Go to line ${idx + 1}`}
             >
               <span
-                className={`block rounded-full transition-all duration-300 ${
-                  activeIndex === idx ? 'h-0.5 w-8 bg-white' : 'h-0.5 w-2 bg-[#3a4251] hover:bg-[#60697d]'
+                className={`block rounded-full transition-all duration-300 h-0.5 ${
+                  activeIndex === idx ? 'w-8 bg-[var(--text-primary)]' : 'w-2 bg-[var(--text-muted)]'
                 }`}
               />
             </button>
           ))}
-          <span className="label-text ml-3 text-[#6d7483]">{activeIndex + 1} / {sentences.length}</span>
+          <span className="label-text ml-3" style={{ color: 'var(--text-muted)' }}>
+            0{activeIndex + 1} / 0{sentences.length}
+          </span>
         </div>
 
-        <div className="glass-panel mb-14 rounded-[32px] p-8 sm:p-10">
+        {/* Quote display */}
+        <div className="min-h-[140px] sm:min-h-[180px] flex items-start mb-16">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeIndex}
-              initial={{ opacity: 0, y: 24, filter: 'blur(8px)' }}
+              initial={{ opacity: 0, y: 25, filter: 'blur(6px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              exit={{ opacity: 0, y: -24, filter: 'blur(8px)' }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="font-serif text-[clamp(30px,5.8vw,74px)] leading-[1.05] tracking-[-0.025em] text-white"
+              exit={{ opacity: 0, y: -25, filter: 'blur(6px)' }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="font-serif text-[clamp(32px,5.5vw,72px)] leading-[1.08] tracking-[-0.025em]"
+              style={{ color: 'var(--text-primary)' }}
             >
               {sentences[activeIndex]}
             </motion.div>
           </AnimatePresence>
         </div>
 
+        {/* Next button */}
         <button
           onClick={nextSentence}
           onMouseEnter={() => soundSynth.playHoverPop()}
-          className="glass-button group inline-flex items-center gap-3 rounded-full px-4 py-2.5 text-[13px] font-medium text-[#e5e9f0]"
+          className="group inline-flex items-center gap-3 text-[13px] font-mono-custom cursor-pointer transition-colors duration-300 px-5 py-2.5 rounded-full border"
+          style={{
+            borderColor: 'var(--border-default)',
+            backgroundColor: 'var(--surface-overlay)',
+            color: 'var(--text-secondary)'
+          }}
         >
           {activeIndex === sentences.length - 1 ? (
             <>
-              <RotateCcw className="h-4 w-4 transition-transform duration-500 group-hover:rotate-180" />
-              <span>Restart</span>
+              <RotateCcw className="w-3.5 h-3.5 group-hover:rotate-180 transition-transform duration-500 text-[var(--accent-primary)]" />
+              <span>Restart Loop</span>
             </>
           ) : (
             <>
-              <span>Next thought</span>
-              <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <span>Next Core Value</span>
+              <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform text-[var(--accent-primary)]" />
             </>
           )}
         </button>

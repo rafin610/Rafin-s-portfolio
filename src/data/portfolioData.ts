@@ -1,197 +1,135 @@
-import { Project, IdeaItem, TimelineMilestone, SkillCategory, LearningItem } from '../types';
+import { Project, TimelineMilestone, SkillCategory, LearningItem, AIWorkflowStep, IdeaItem, CurrentlyBuildingItem } from '../types';
+
+import portraitPath from '../assets/images/ahmed_rafin_real_portrait_1785078265376.jpg';
+import orbPath from '../assets/images/abstract_orb_sphere_1785077491599.jpg';
 
 export const PERSONAL_INFO = {
   name: "Ahmed Rafin",
-  role: "Student · Developer · Creative Technologist · Product Thinker",
+  role: "Self-Taught Developer & AI Builder",
   location: "Bangladesh",
   email: "ahmedrafin014@gmail.com",
-  whatsapp: "+880 1629-221285",
-  whatsappUrl: "https://wa.me/8801629221285?text=Hi%20Ahmed,%20I%20saw%20your%20portfolio%20and%20would%20love%20to%20connect!",
-  github: "https://github.com/ahmedrafin",
-  linkedin: "https://linkedin.com/in/ahmedrafin",
-  twitter: "https://x.com/ahmedrafin014",
-  discord: "rafin#0001",
-  bio: "A Bangladeshi student, developer, creative technologist, product thinker, gamer, and future entrepreneur. Passionate about turning raw curiosity into elegant digital products that make an impact.",
-  quote: "I don't just want to use technology. I want to understand it, build with it, and eventually create something meaningful of my own.",
-  portraitPath: new URL("../assets/images/ahmed_rafin_real_portrait_1785078265376.jpg", import.meta.url).href,
-  orbPath: new URL("../assets/images/abstract_orb_sphere_1785077491599.jpg", import.meta.url).href
+  whatsapp: "+880 1629 221285",
+  whatsappUrl: "https://wa.me/8801629221285",
+  github: "https://github.com/rafin610",
+  facebook: "https://www.facebook.com/profile.php?id=100035494603229",
+  twitter: "https://x.com/RafinAhmed78831",
+  bio: "I'm a self-taught developer from Bangladesh, learning through building real projects. My main interests are web development, AI, AI-assisted development, automation, product building, and modern developer tools. I'm currently studying while building real projects — turning every idea into something I can ship and learn from.",
+  quote: "I learn best by building real things. Instead of waiting until I know everything, I build, face problems, solve them, and improve along the way.",
+  portraitPath: portraitPath,
+  orbPath: orbPath
 };
 
 export const PROJECTS: Project[] = [
   {
-    id: "beatflow",
+    id: "odhyay",
     number: "01",
-    title: "BEATFLOW",
-    headline: "Music should feel effortless.",
-    description: "A modern music player focused on smooth interaction, beautiful listening experiences, interactive playlists, synced lyrics, and ambient visualizer dynamics.",
-    tags: ["React", "Web Audio API", "Tailwind CSS", "Motion", "Audio Engine"],
-    status: "Interactive Prototype",
-    color: "from-blue-500/20 to-indigo-500/10",
-    category: "Audio Technology",
-    featuredVisual: new URL("../assets/images/regenerated_image_1785078943872.png", import.meta.url).href,
-    fullOverview: "BeatFlow was built out of frustration with cluttered streaming interfaces. It presents a distraction-free digital soundscape where audio playback reactive visuals match the pulse of the song.",
-    keyFeatures: [
-      "Custom Web Audio API frequency visualizer with real-time spectrum analysis",
-      "Dynamic background gradient response syncing with album art dominance",
-      "Seamless playlist queues and instant local track preview player",
-      "Distraction-free immersive fullscreen player with synced typography"
-    ],
-    liveDemoType: "beatflow"
-  },
-  {
-    id: "boibazar",
-    number: "02",
-    title: "BOIBAZAR",
-    headline: "A better way to discover books.",
-    description: "A premium digital bookstore concept designed specifically for the Bangladeshi book market, blending editorial discovery with modern e-commerce.",
-    tags: ["React", "Tailwind CSS", "Search Indexing", "E-Commerce", "UI/UX"],
-    status: "Active Concept",
+    title: "ODHYAY",
+    headline: "A calm reading experience for Bangla readers.",
+    description: "A digital reading platform focused on creating a calm and accessible reading experience for Bangla readers. Built with a modern web stack for fast, fluid interactions.",
+    tags: ["React", "TypeScript", "Vite", "Tailwind CSS", "Supabase", "PostgreSQL"],
+    status: "Building / Live",
     color: "from-amber-500/20 to-orange-500/10",
-    category: "Product & E-Commerce",
-    featuredVisual: "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1200&q=80",
-    fullOverview: "BoiBazar reimagines how readers in Bangladesh browse Bengali literature and global titles. Instead of cold algorithmic grids, BoiBazar offers curated editorial shelves, reader reviews, and instant author spotlights.",
+    category: "Bangla Digital Reading Platform",
+    liveUrl: "https://odhyay.vercel.app/",
+    githubUrl: "https://github.com/rafin610/odhyay",
     keyFeatures: [
-      "Editorial shelf layouts tailored to Bangladeshi literary heritage and modern releases",
-      "Smart category filtering (Humayun Ahmed, Thriller, Tech, Academic, Self-Improvement)",
-      "Instant reader preview reader and sample chapter drawer",
-      "Localized checkout interface designed for mobile banking (bKash/Nagad concept)"
-    ],
-    liveDemoType: "boibazar"
+      "Digital book reading experience",
+      "Book management and categorization",
+      "Author profiles and discovery",
+      "Reading progress tracking",
+      "Admin functionality for content management"
+    ]
   },
   {
-    id: "smart-pdf",
+    id: "the-dropout-college",
+    number: "02",
+    title: "THE DROPOUT COLLEGE",
+    headline: "A community for self-driven learners and builders.",
+    description: "A community platform for people who want to learn practical skills and build things outside traditional paths — covering coding, AI, content creation, video editing, esports, and creative technology.",
+    tags: ["Community Platform", "Web", "Self-Education"],
+    status: "Building",
+    color: "from-indigo-500/20 to-purple-500/10",
+    category: "Community Platform",
+    liveUrl: "https://the-dropout-college.vercel.app/",
+    githubUrl: "https://github.com/rafin610/The-dropout-college",
+    keyFeatures: [
+      "Platform for self-driven learners",
+      "Focused on practical skills and building",
+      "Covers coding, AI, content creation, and more"
+    ]
+  },
+  {
+    id: "dropclip",
     number: "03",
-    title: "SMART PDF READER",
-    headline: "Reading should be more interactive.",
-    description: "A smarter document experience that helps users read, understand, organize, highlight, summarize, translate, and query complex PDF documents.",
-    tags: ["TypeScript", "PDF Engine", "AI Summarizer", "React", "Productivity"],
-    status: "In Development",
+    title: "DROPCLIP",
+    headline: "Simple video downloading for normal users.",
+    description: "A lightweight desktop video downloader project focused on making video downloading simple and accessible for normal users. Built with Python and distributed as an executable.",
+    tags: ["Python", "Desktop App", "CLI", "GitHub Releases"],
+    status: "Experimental / Built",
     color: "from-cyan-500/20 to-emerald-500/10",
-    category: "Intelligent Tools",
-    featuredVisual: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=1200&q=80",
-    fullOverview: "Static PDFs are hard to navigate and comprehend quickly. Smart PDF Reader integrates intelligent text extraction, key phrase highlighting, and quick summarization to make research seamless.",
+    category: "Desktop Application",
+    githubUrl: "https://github.com/nirobmia-40/DropClip",
     keyFeatures: [
-      "Interactive reader with real-time text chunk highlighting and sticky note annotations",
-      "Instant summary panel breaking down 50-page documents into 3-bullet core insights",
-      "Multi-language translation helper tailored for academic research in English and Bengali",
-      "Quick search engine with smart semantic section jumps"
-    ],
-    liveDemoType: "pdfreader"
+      "Lightweight desktop video downloader",
+      "Simple interface for non-technical users",
+      "Executable distribution via GitHub releases"
+    ]
+  }
+];
+
+export const CURRENTLY_BUILDING: CurrentlyBuildingItem[] = [
+  {
+    name: "Odhyay",
+    description: "Bangla digital reading platform with enhanced typography and reader controls.",
+    status: "Live & Iterating",
+    url: "https://odhyay.vercel.app/"
   },
   {
-    id: "nafs-control",
-    number: "04",
-    title: "NAFS CONTROL",
-    headline: "Technology should help us control our attention.",
-    description: "A personal discipline and digital habit management concept designed to help people build better daily routines, track focus sessions, and regain digital sovereignty.",
-    tags: ["React", "State Architecture", "Habit Engine", "Tailwind CSS", "Mindfulness"],
-    status: "Beta Concept",
-    color: "from-emerald-500/20 to-teal-500/10",
-    category: "Human & Attention",
-    featuredVisual: "/src/assets/images/regenerated_image_1785078946015.jpg",
-    fullOverview: "Nafs (Self-Discipline) Control treats human attention as a sacred resource. It provides calm visual trackers for screen limits, meditation, focus blocks, and habit consistency without anxiety-inducing gamification.",
-    keyFeatures: [
-      "Calm, distraction-free daily intention tracker",
-      "Focus timer with soft atmospheric audio and visual pulse",
-      "Reflection journal with privacy-first local storage",
-      "Attention audit charts showing screen time shift over 30-day cycles"
-    ],
-    liveDemoType: "nafs"
+    name: "The DropOut College",
+    description: "Community platform connecting alternative learners, creators, and builders.",
+    status: "Building & Growing",
+    url: "https://the-dropout-college.vercel.app/"
   },
   {
-    id: "red-paradox",
-    number: "05",
-    title: "RED PARADOX",
-    headline: "Competition creates identity.",
-    description: "An esports team, gaming hub, and digital community platform built around competitive gaming, teamwork, identity, and youth leadership in Bangladesh.",
-    tags: ["React", "Community Hub", "Esports", "Tailwind CSS", "Branding"],
-    status: "Community Live",
-    color: "from-rose-500/20 to-red-600/10",
-    category: "Gaming & Brand",
-    featuredVisual: "/src/assets/images/regenerated_image_1785078947259.png",
-    fullOverview: "Red Paradox brings competitive gamers together. Born out of a passion for esports and tactical gaming, it serves as an official team portal, tournament calendar, player roster showcase, and media channel.",
-    keyFeatures: [
-      "High-energy minimalist roster showcase with active player stats & main roles",
-      "Match schedules and tournament result logs with livestream links",
-      "Community hub integration for Discord scrims and tournament signups",
-      "Custom branded merch & team highlight reel gallery"
-    ],
-    liveDemoType: "redparadox"
+    name: "AI & Local LLM Workflows",
+    description: "Experimenting with Ollama, MCP servers, and agentic coding setups.",
+    status: "Active Exploration"
   }
 ];
 
 export const IDEAS: IdeaItem[] = [
   {
-    id: "boibazar-exp",
-    title: "BoiBazar Live Audio Sampler",
-    tagline: "Audiobook excerpts narrated in Bengali dialects.",
-    problem: "Readers in Bangladesh rarely get to sample audiobook performances before purchasing full licenses.",
-    coreIdea: "Provide 60-second high-fidelity ambient voice previews for top Bengali bestsellers.",
-    solution: "A lightweight web player embedded right in the book detail drawer with synced transcript highlighting.",
+    id: "odhyay-audio",
+    title: "Odhyay Audio & Offline Mode",
+    tagline: "Listen to Bangla literature on the go with zero connection drops.",
     status: "Building",
-    tags: ["E-Commerce", "Audio", "Bengali Literature"],
-    category: "Publishing",
-    updatedAt: "July 2026"
+    category: "EdTech / Media",
+    problem: "Bengali readers often lose reading progress when traveling with flaky internet, and audio alternatives for classic Bangla books are fragmented.",
+    coreIdea: "Local IndexedDB caching + offline reader sync combined with lightweight text-to-speech narration.",
+    solution: "A service worker caching layer with customizable audio playback pace and bookmarks.",
+    tags: ["PWA", "Offline Sync", "Bangla TTS", "IndexedDB"]
   },
   {
-    id: "beatflow-cloud",
-    title: "BeatFlow Cloud Sync",
-    tagline: "Peer-to-peer library streaming without heavy server costs.",
-    problem: "Personal local music collections are fragmented across laptop and mobile devices.",
-    coreIdea: "Use WebRTC data channels to stream music directly from desktop storage to mobile browser.",
-    solution: "Zero cloud storage fees; complete privacy and instant high-res playback.",
-    status: "Exploring",
-    tags: ["WebRTC", "P2P", "Audio"],
-    category: "Networking",
-    updatedAt: "June 2026"
+    id: "dropout-hub",
+    title: "The DropOut Showcase Hub",
+    tagline: "A proof-of-work feed for youth building without degrees.",
+    status: "Building",
+    category: "Community",
+    problem: "Young self-taught creators struggle to get feedback and credibility without traditional credentials or corporate resumes.",
+    coreIdea: "Micro-ship logs where builders post daily changelogs, demos, and code repositories to earn community badges.",
+    solution: "A minimalist dashboard tracking shipped projects, peer reviews, and live collaboration invites.",
+    tags: ["Community", "Proof of Work", "Builders", "Next.js"]
   },
   {
-    id: "nafs-blocker",
-    title: "Nafs Hardware Attention Key",
-    tagline: "Physical USB device to trigger quiet study mode.",
-    problem: "Software blockers are too easy to bypass with two clicks during urge moments.",
-    coreIdea: "A physical NFC tag or USB dongle that locks browser distraction tabs until tapped again.",
-    solution: "Combines physical tactile action with browser extension protocol.",
-    status: "Thinking",
-    tags: ["Hardware", "Focus", "IoT"],
-    category: "Mindfulness",
-    updatedAt: "May 2026"
-  },
-  {
-    id: "himi-loom",
-    title: "Himi Loom",
-    tagline: "Generative textile & pattern design tool inspired by Bangladeshi Jamdani geometry.",
-    problem: "Traditional artisan patterns from Bangladesh are losing digital archive visibility.",
-    coreIdea: "Use vector algorithms to generate modern responsive grid artwork based on historic Jamdani motifs.",
-    solution: "Web canvas generator outputting SVG exportable assets for modern web designers and apparel creators.",
+    id: "local-dev-cli",
+    title: "DevPilot Local Assistant",
+    tagline: "Zero-latency code explanations powered entirely by local Ollama models.",
     status: "Experimenting",
-    tags: ["Generative Art", "SVG", "Heritage"],
-    category: "Creative Tech",
-    updatedAt: "July 2026"
-  },
-  {
-    id: "epiccut-studio",
-    title: "EpicCut Studio",
-    tagline: "Automated gaming highlight reel generator for esports clips.",
-    problem: "Gamers spend hours slicing 2-hour twitch streams to find 10-second multi-kills.",
-    coreIdea: "Detect loud audio spikes and killfeed UI changes to slice clips automatically.",
-    solution: "A browser-based client video analyzer rendering fast MP4 reels.",
-    status: "Exploring",
-    tags: ["Video AI", "Esports", "WebAssembly"],
-    category: "Gaming Tools",
-    updatedAt: "April 2026"
-  },
-  {
-    id: "digital-productivity",
-    title: "Minimalist Bangla OCR Scratchpad",
-    tagline: "Instant hand-written Bengali note digitizer.",
-    problem: "Handwritten class notes in Bangla are tedious to turn into clean searchable text.",
-    coreIdea: "Ultra-fast canvas drawing board with lightweight OCR model to convert Bangla script into plain markdown.",
-    solution: "Runs locally in browser, instantly saving text into markdown files.",
-    status: "Coming Soon",
-    tags: ["OCR", "Bangla NLP", "Productivity"],
-    category: "Tools",
-    updatedAt: "July 2026"
+    category: "Developer Tools / AI",
+    problem: "Cloud AI tools have rate limits, privacy concerns with proprietary code, and require constant connectivity.",
+    coreIdea: "A lightweight terminal CLI communicating directly with a local Ollama instance for git diff reviews and quick explanations.",
+    solution: "Small Python/Node CLI tool that inspects staged git files and suggests commit messages and catches syntax mistakes locally.",
+    tags: ["Local AI", "Ollama", "CLI", "Automation"]
   }
 ];
 
@@ -219,7 +157,7 @@ export const TIMELINE: TimelineMilestone[] = [
     period: "Identity",
     title: "Gaming & Competition",
     subtitle: "Strategy, reaction times, and team dynamics.",
-    description: "Diving deep into competitive gaming, tactical mechanics, esports team coordination, and creating the Red Paradox community.",
+    description: "Diving deep into competitive gaming, tactical mechanics, and esports team coordination. Learning leadership and teamwork under pressure.",
     quote: "Gaming taught me leadership under intense pressure.",
     iconName: "Gamepad2"
   },
@@ -228,34 +166,34 @@ export const TIMELINE: TimelineMilestone[] = [
     period: "Pivot",
     title: "Technology",
     subtitle: "From consumer to creator.",
-    description: "Understanding the building blocks of operating systems, cloud infrastructures, web servers, and modern device ecosystems.",
+    description: "Understanding the building blocks of operating systems, web servers, and modern developer ecosystems. Shifting from consuming technology to wanting to build with it.",
     quote: "Consuming technology was no longer enough.",
     iconName: "Cpu"
   },
   {
     id: "coding",
     period: "Execution",
-    title: "Coding & Engineering",
-    subtitle: "Writing first lines of code and mastering syntax.",
-    description: "Learning HTML, CSS, JavaScript, React, Tailwind, Node.js, and mobile development. Turning logic into functional user interfaces.",
-    quote: "Code is the paint; the browser is the canvas.",
+    title: "Self-Taught Coding",
+    subtitle: "Writing first lines of code and learning by doing.",
+    description: "Learning HTML, CSS, JavaScript, React, and modern tooling through online resources, documentation, and building real projects. No traditional CS path — just curiosity and determination.",
+    quote: "Every bug taught me more than any textbook could.",
     iconName: "Code2"
   },
   {
-    id: "products",
+    id: "ai-building",
     period: "Current Stage",
-    title: "Building Products",
-    subtitle: "Crafting real tools like BeatFlow, BoiBazar, & Nafs Control.",
-    description: "Shifting focus from small code snippets to complete, human-centered products that solve genuine needs in music, reading, and discipline.",
-    quote: "Focusing on usability, aesthetics, and true purpose.",
+    title: "AI-Assisted Building",
+    subtitle: "Using AI to learn faster and build smarter.",
+    description: "Integrating AI into my development workflow — using it for research, planning, debugging, and experimenting with local models and automation. Building real projects like Odhyay and The DropOut College.",
+    quote: "AI isn't replacing my learning — it's accelerating it.",
     iconName: "Layers"
   },
   {
-    id: "entrepreneurship",
-    period: "Future",
-    title: "Entrepreneurship",
-    subtitle: "Creating something that matters.",
-    description: "Building sustainable ventures, empowering youth technology in Bangladesh, and creating software that leaves a lasting positive footprint.",
+    id: "future",
+    period: "Next",
+    title: "Keep Building",
+    subtitle: "Ship more, learn more, build community.",
+    description: "Continuing to build real products, grow The DropOut College community, and deepen my understanding of web development, AI, and production-level applications.",
     quote: "Still learning. Still building. Still becoming.",
     iconName: "Rocket"
   }
@@ -263,44 +201,93 @@ export const TIMELINE: TimelineMilestone[] = [
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
-    category: "Foundations",
-    description: "The fundamental web languages and design principles I rely on daily.",
+    category: "Frontend",
+    description: "Building interfaces and user experiences for the web.",
+    icon: "Code",
     skills: [
-      { name: "HTML5", level: "Building" },
-      { name: "CSS3 / Modern Layouts", level: "Building" },
-      { name: "JavaScript (ES6+)", level: "Building" },
-      { name: "Responsive Architecture", level: "Building" },
-      { name: "Tailwind CSS v4", level: "Building" }
+      { name: "HTML", level: "Comfortable" },
+      { name: "CSS", level: "Comfortable" },
+      { name: "JavaScript", level: "Working Knowledge" },
+      { name: "React", level: "Working Knowledge" },
+      { name: "Vite", level: "Working Knowledge" },
+      { name: "Tailwind CSS", level: "Comfortable" }
     ]
   },
   {
-    category: "Development",
-    description: "Frontend libraries, build systems, and workflow engines.",
+    category: "Backend",
+    description: "Server-side logic, APIs, and data handling.",
+    icon: "Server",
     skills: [
-      { name: "React 19", level: "Building" },
-      { name: "Vite", level: "Building" },
-      { name: "Node.js", level: "Practicing" },
-      { name: "Git & Version Control", level: "Building" },
-      { name: "GitHub Workflows", level: "Building" }
+      { name: "Node.js", level: "Learning" },
+      { name: "Express.js", level: "Learning" },
+      { name: "tRPC", level: "Exploring" }
     ]
   },
   {
-    category: "Mobile",
-    description: "Cross-platform mobile frameworks for pocket-sized experiences.",
+    category: "Database",
+    description: "Data storage, schemas, and validation.",
+    icon: "Database",
     skills: [
-      { name: "Flutter", level: "Practicing" },
-      { name: "Dart", level: "Practicing" },
+      { name: "Supabase", level: "Working Knowledge" },
+      { name: "PostgreSQL", level: "Learning" },
+      { name: "Zod", level: "Learning" }
+    ]
+  },
+  {
+    category: "AI",
+    description: "AI tools, models, and development workflows.",
+    icon: "Bot",
+    skills: [
+      { name: "AI-assisted Development", level: "Working Knowledge" },
+      { name: "Prompt Engineering", level: "Working Knowledge" },
+      { name: "Ollama", level: "Exploring" },
+      { name: "Hugging Face", level: "Exploring" },
+      { name: "Local AI", level: "Exploring" },
+      { name: "AI Agents", level: "Exploring" },
+      { name: "MCP", level: "Exploring" },
+      { name: "AI Automation", level: "Exploring" }
+    ]
+  },
+  {
+    category: "Tools",
+    description: "Developer tools and deployment platforms.",
+    icon: "Wrench",
+    skills: [
+      { name: "Git", level: "Comfortable" },
+      { name: "GitHub", level: "Comfortable" },
+      { name: "VS Code", level: "Comfortable" },
+      { name: "Vercel", level: "Working Knowledge" },
+      { name: "Android Studio", level: "Learning" },
       { name: "Expo", level: "Exploring" },
-      { name: "React Native", level: "Exploring" }
+      { name: "Linux", level: "Learning" },
+      { name: "PowerShell", level: "Working Knowledge" }
     ]
   }
 ];
 
 export const LEARNING_GOALS: LearningItem[] = [
-  { subject: "JavaScript & Advanced Async Logic", stage: "Building", focus: "Deep event loop comprehension, Web Workers, & performance optimization.", progressPercentage: 85 },
-  { subject: "React Architecture & Custom Hooks", stage: "Building", focus: "Clean state isolation, custom hooks, and Motion layout animations.", progressPercentage: 80 },
-  { subject: "Mobile App Development (Flutter & Expo)", stage: "Practicing", focus: "Creating native mobile clients with fluid 60fps animations.", progressPercentage: 65 },
-  { subject: "Cloud Infrastructure & Automation", stage: "Exploring", focus: "Containerization, serverless functions, and CI/CD pipelines.", progressPercentage: 50 },
-  { subject: "Product Design & User Psychology", stage: "Understanding", focus: "Designing tools that respect human attention and reduce cognitive noise.", progressPercentage: 75 },
-  { subject: "Business Strategy & Entrepreneurship", stage: "Understanding", focus: "Turning software concepts into viable, self-sustaining ventures.", progressPercentage: 60 }
+  { subject: "Advanced JavaScript", stage: "Learning", focus: "Deep understanding of async patterns, closures, and performance." },
+  { subject: "Backend Architecture", stage: "Learning", focus: "Building APIs, server logic, and understanding system design." },
+  { subject: "AI Agents & MCP", stage: "Exploring", focus: "Building and experimenting with AI agents and model context protocols." },
+  { subject: "Local AI & Automation", stage: "Exploring", focus: "Running models locally with Ollama, Hugging Face, and building automation workflows." },
+  { subject: "React Native / Expo", stage: "Exploring", focus: "Cross-platform mobile development for iOS and Android." },
+  { subject: "Production-Level Development", stage: "Learning", focus: "Building applications that can handle real users, real data, and real scale." }
+];
+
+export const AI_WORKFLOW_STEPS: AIWorkflowStep[] = [
+  { label: "Research", description: "Use AI to explore topics, read documentation, and understand problems faster." },
+  { label: "Plan", description: "Structure ideas, outline architecture, and map out features before coding." },
+  { label: "Build", description: "Write code with AI assistance — accelerating implementation and solving blockers." },
+  { label: "Debug", description: "Troubleshoot issues with AI-assisted root cause analysis and suggestions." },
+  { label: "Automate", description: "Streamline repetitive tasks, workflows, and developer operations." },
+  { label: "Ship", description: "Deploy, gather user feedback, and iterate quickly on real products." }
+];
+
+export const AI_EXPLORATIONS = [
+  "Local AI (Ollama)",
+  "Hugging Face Models",
+  "AI Agents",
+  "MCP (Model Context Protocol)",
+  "AI Automation",
+  "AI-Assisted Coding"
 ];

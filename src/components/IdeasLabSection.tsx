@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ChevronRight, X } from 'lucide-react';
+import { ChevronRight, X, Lightbulb } from 'lucide-react';
 import { IDEAS } from '../data/portfolioData';
 import { IdeaItem } from '../types';
 import { soundSynth } from '../utils/soundSynth';
@@ -8,35 +8,46 @@ import { soundSynth } from '../utils/soundSynth';
 export const IdeasLabSection: React.FC = () => {
   const [selectedIdea, setSelectedIdea] = useState<IdeaItem | null>(null);
 
-  const statusColor: Record<string, string> = {
-    Building: 'text-emerald-400',
-    Exploring: 'text-cyan-400',
-    Experimenting: 'text-indigo-400',
-    Thinking: 'text-amber-400',
-    'Coming Soon': 'text-rose-400',
+  const getStatusBadge = (status: string) => {
+    switch (status) {
+      case 'Building':
+        return 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20';
+      case 'Exploring':
+        return 'text-sky-400 bg-sky-500/10 border-sky-500/20';
+      case 'Experimenting':
+        return 'text-indigo-400 bg-indigo-500/10 border-indigo-500/20';
+      case 'Thinking':
+        return 'text-amber-400 bg-amber-500/10 border-amber-500/20';
+      default:
+        return 'text-[var(--text-muted)] bg-[var(--surface-overlay)] border-[var(--border-default)]';
+    }
   };
 
   return (
-    <section id="ideas" className="relative z-10 mx-auto max-w-[1400px] px-6 py-32 md:px-16">
+    <section id="ideas" className="relative py-32 px-6 md:px-16 max-w-[1400px] mx-auto z-10">
+
       <motion.span
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="label-text mb-20 block text-[#6d7483]"
+        className="label-text mb-20 block"
+        style={{ color: 'var(--text-muted)' }}
       >
-        05 / Ideas Lab
+        07 / Ideas & Experiments
       </motion.span>
 
+      {/* Header */}
       <div className="mb-20 max-w-2xl">
-        <div className="mb-3 overflow-hidden">
+        <div className="overflow-hidden mb-3">
           <motion.h2
             initial={{ y: '100%' }}
             whileInView={{ y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-serif text-[clamp(34px,5.4vw,72px)] leading-[1.05] tracking-[-0.025em] text-white"
+            className="font-serif text-[clamp(36px,5.5vw,72px)] leading-[1.05] tracking-[-0.025em]"
+            style={{ color: 'var(--text-primary)' }}
           >
-            Ideas Not Yet Finished
+            Ideas in Progress
           </motion.h2>
         </div>
         <motion.p
@@ -44,97 +55,132 @@ export const IdeasLabSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-[15px] font-light leading-relaxed text-[#8f95a6]"
+          className="text-[15px] font-light leading-relaxed"
+          style={{ color: 'var(--text-secondary)' }}
         >
-          A living collection of experiments, raw product hypotheses, and future concepts.
+          Raw product hypotheses, architectural experiments, and concepts I'm exploring before full-scale shipping.
         </motion.p>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {/* Ideas grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {IDEAS.map((item, index) => (
           <motion.div
             key={item.id}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: index * 0.07 }}
+            transition={{ duration: 0.5, delay: index * 0.08 }}
             onClick={() => {
               setSelectedIdea(item);
               soundSynth.playChime(659, 0.04);
             }}
             onMouseEnter={() => soundSynth.playHoverPop()}
-            className="glass-panel group flex min-h-[220px] cursor-pointer flex-col justify-between rounded-[24px] p-6 transition-all duration-400"
+            className="p-8 rounded-2xl border flex flex-col justify-between cursor-pointer transition-all duration-300 min-h-[240px] hover:border-[var(--border-hover)]"
+            style={{
+              backgroundColor: 'var(--surface-overlay)',
+              borderColor: 'var(--border-default)'
+            }}
           >
             <div>
-              <div className="mb-5 flex items-center justify-between">
-                <span className={`text-[11px] font-mono-custom ${statusColor[item.status] ?? 'text-[#6d7483]'}`}>
+              <div className="flex items-center justify-between mb-5">
+                <span className={`text-[11px] font-mono-custom px-2.5 py-0.5 rounded-full border ${getStatusBadge(item.status)}`}>
                   {item.status}
                 </span>
-                <span className="label-text text-[#6d7483]">{item.category}</span>
+                <span className="label-text" style={{ color: 'var(--text-muted)' }}>{item.category}</span>
               </div>
-              <h3 className="mb-2 text-[17px] font-medium leading-snug text-white transition-colors duration-400 group-hover:text-[#8b5cf6]">
+              <h3 className="text-xl font-medium mb-3 group-hover:text-[var(--accent-primary)] transition-colors leading-snug" style={{ color: 'var(--text-primary)' }}>
                 {item.title}
               </h3>
-              <p className="text-[13px] font-light leading-relaxed text-[#8f95a6]">{item.tagline}</p>
+              <p className="text-[14px] font-light leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                {item.tagline}
+              </p>
             </div>
 
-            <div className="mt-6 flex items-center gap-1.5 text-[12px] font-mono-custom text-[#6d7483] transition-colors group-hover:text-[#c7cad4]">
-              <span>Inspect</span>
-              <ChevronRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+            <div className="flex items-center gap-1.5 transition-colors mt-8 text-xs font-mono-custom pt-4 border-t" style={{ borderColor: 'var(--border-default)', color: 'var(--text-muted)' }}>
+              <span>Inspect Concept</span>
+              <ChevronRight className="w-3.5 h-3.5" />
             </div>
           </motion.div>
         ))}
       </div>
 
+      {/* Idea modal */}
       <AnimatePresence>
         {selectedIdea && (
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 backdrop-blur-2xl"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md"
             onClick={() => setSelectedIdea(null)}
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.97, y: 15 }}
+              initial={{ opacity: 0, scale: 0.96, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.97, y: 15 }}
-              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              exit={{ opacity: 0, scale: 0.96, y: 15 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-xl rounded-[28px] border border-white/10 bg-[#0b0d12]/90 p-8 shadow-2xl"
+              className="w-full max-w-xl border rounded-2xl p-8 shadow-2xl relative"
+              style={{
+                backgroundColor: 'var(--bg-primary)',
+                borderColor: 'var(--border-default)',
+                color: 'var(--text-primary)'
+              }}
             >
-              <div className="mb-7 flex items-start justify-between">
+              {/* Header */}
+              <div className="flex items-start justify-between mb-6">
                 <div>
-                  <span className={`mb-2 block text-[11px] font-mono-custom ${statusColor[selectedIdea.status] ?? 'text-[#6d7483]'}`}>
+                  <span className={`text-[11px] font-mono-custom px-2.5 py-0.5 rounded-full border inline-block mb-3 ${getStatusBadge(selectedIdea.status)}`}>
                     {selectedIdea.status} · {selectedIdea.category}
                   </span>
-                  <h3 className="mb-1 font-serif text-[26px] leading-tight tracking-[-0.01em] text-white">{selectedIdea.title}</h3>
-                  <p className="text-[14px] font-light italic text-[#8f95a6]">“{selectedIdea.tagline}”</p>
+                  <h3 className="font-serif text-2xl md:text-3xl tracking-tight mb-2" style={{ color: 'var(--text-primary)' }}>
+                    {selectedIdea.title}
+                  </h3>
+                  <p className="text-[14px] font-light italic" style={{ color: 'var(--text-secondary)' }}>
+                    "{selectedIdea.tagline}"
+                  </p>
                 </div>
                 <button
-                  onClick={() => {
-                    soundSynth.playHoverPop();
-                    setSelectedIdea(null);
-                  }}
-                  className="rounded-full p-2 text-[#6d7483] transition-colors hover:text-white"
+                  onClick={() => { soundSynth.playHoverPop(); setSelectedIdea(null); }}
+                  className="p-2 transition-colors cursor-pointer rounded-full hover:bg-[var(--surface-overlay)]"
+                  style={{ color: 'var(--text-secondary)' }}
                 >
-                  <X className="h-5 w-5" />
+                  <X className="w-5 h-5" />
                 </button>
               </div>
 
-              <div className="mb-7 space-y-5">
-                {[
-                  { label: 'The Problem', body: selectedIdea.problem, color: 'text-rose-400' },
-                  { label: 'Core Idea', body: selectedIdea.coreIdea, color: 'text-cyan-400' },
-                  { label: 'Solution', body: selectedIdea.solution, color: 'text-emerald-400' },
-                ].map(({ label, body, color }) => (
-                  <div key={label}>
-                    <span className={`label-text ${color} mb-2 block`}>{label}</span>
-                    <p className="text-[14px] font-light leading-relaxed text-[#9ba1ad]">{body}</p>
-                  </div>
-                ))}
+              {/* Content */}
+              <div className="space-y-4 mb-6">
+                <div>
+                  <span className="label-text block mb-1 text-rose-400">The Problem</span>
+                  <p className="text-[14px] font-light leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                    {selectedIdea.problem}
+                  </p>
+                </div>
+                <div>
+                  <span className="label-text block mb-1" style={{ color: 'var(--accent-primary)' }}>Core Idea</span>
+                  <p className="text-[14px] font-light leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                    {selectedIdea.coreIdea}
+                  </p>
+                </div>
+                <div>
+                  <span className="label-text block mb-1 text-emerald-400">Proposed Solution</span>
+                  <p className="text-[14px] font-light leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                    {selectedIdea.solution}
+                  </p>
+                </div>
               </div>
 
-              <div className="flex flex-wrap gap-2 border-t border-white/10 pt-5">
-                {selectedIdea.tags.map((t) => (
-                  <span key={t} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-mono-custom text-[#aab0bc]">
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2 pt-4 border-t" style={{ borderColor: 'var(--border-default)' }}>
+                {selectedIdea.tags.map(t => (
+                  <span
+                    key={t}
+                    className="text-xs font-mono-custom px-3 py-1 rounded-full border"
+                    style={{
+                      borderColor: 'var(--border-default)',
+                      backgroundColor: 'var(--surface-overlay)',
+                      color: 'var(--text-muted)'
+                    }}
+                  >
                     #{t}
                   </span>
                 ))}

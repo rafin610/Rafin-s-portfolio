@@ -43,15 +43,16 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-        className="relative w-full max-w-4xl bg-neutral-950 border border-white/15 rounded-3xl overflow-hidden shadow-2xl my-auto text-neutral-100"
+        className="relative w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl my-auto"
+        style={{ backgroundColor: 'var(--bg-primary)', borderColor: 'var(--border-default)', borderWidth: '1px', color: 'var(--text-primary)' }}
       >
         {/* Header Modal Bar */}
-        <div className="p-6 border-b border-white/10 flex items-center justify-between bg-neutral-900/60 backdrop-blur-xl">
+        <div className="p-6 flex items-center justify-between backdrop-blur-xl" style={{ borderBottomColor: 'var(--border-default)', borderBottomWidth: '1px', backgroundColor: 'rgba(0,0,0,0.6)' }}>
           <div className="flex items-center gap-3">
-            <span className="text-xs font-mono text-sky-400 uppercase tracking-widest px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20">
+            <span className="text-xs font-mono uppercase tracking-widest px-3 py-1 rounded-full" style={{ color: 'var(--accent-primary)', backgroundColor: 'rgba(232, 213, 183, 0.1)', borderColor: 'var(--accent-primary)', borderWidth: '1px' }}>
               Project {project.number}
             </span>
-            <span className="text-sm font-mono text-neutral-400">
+            <span className="text-sm font-mono" style={{ color: 'var(--text-secondary)' }}>
               {project.category}
             </span>
           </div>
@@ -61,7 +62,8 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
               soundSynth.playHoverPop();
               onClose();
             }}
-            className="p-2.5 rounded-full bg-neutral-900 border border-white/10 text-neutral-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+            className="p-2.5 rounded-full transition-colors cursor-pointer"
+            style={{ backgroundColor: 'rgba(0,0,0,0.4)', borderColor: 'var(--border-default)', borderWidth: '1px', color: 'var(--text-secondary)' }}
           >
             <X className="w-5 h-5" />
           </button>
@@ -72,51 +74,51 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           
           {/* Main Title & Headline */}
           <div>
-            <h2 className="text-3xl sm:text-5xl font-light text-white tracking-tight mb-2">
+            <h2 className="text-3xl sm:text-5xl font-light tracking-tight mb-2" style={{ color: 'var(--text-primary)' }}>
               {project.title}
             </h2>
-            <p className="text-lg sm:text-xl text-sky-300 font-light italic mb-4">
+            <p className="text-lg sm:text-xl font-light italic mb-4" style={{ color: 'var(--accent-primary)' }}>
               “{project.headline}”
             </p>
-            <p className="text-sm text-neutral-300 font-light leading-relaxed">
+            <p className="text-sm font-light leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               {project.fullOverview}
             </p>
           </div>
 
           {/* INTERACTIVE DEMO MODULE BY TYPE */}
-          <div className="p-6 rounded-2xl bg-neutral-900/90 border border-white/10">
-            <div className="flex items-center justify-between mb-4 border-b border-white/5 pb-3">
+          <div className="p-6 rounded-2xl" style={{ backgroundColor: 'rgba(0,0,0,0.5)', borderColor: 'var(--border-default)', borderWidth: '1px' }}>
+            <div className="flex items-center justify-between mb-4 pb-3" style={{ borderBottomColor: 'var(--border-default)', borderBottomWidth: '1px' }}>
               <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-sky-400" />
-                <span className="text-xs font-mono uppercase tracking-widest text-sky-300">
+                <Sparkles className="w-4 h-4" style={{ color: 'var(--accent-primary)' }} />
+                <span className="text-xs font-mono uppercase tracking-widest" style={{ color: 'var(--accent-primary)' }}>
                   Interactive Concept Simulator
                 </span>
               </div>
-              <span className="text-[10px] font-mono text-neutral-500">Live Sandbox</span>
+              <span className="text-[10px] font-mono" style={{ color: 'var(--text-muted)' }}>Live Sandbox</span>
             </div>
 
             {/* 1. BEATFLOW DEMO */}
             {project.liveDemoType === 'beatflow' && (
               <div className="space-y-6">
-                <div className="p-6 rounded-2xl bg-neutral-950 border border-white/10 flex flex-col items-center text-center">
+                <div className="p-6 rounded-2xl flex flex-col items-center text-center" style={{ backgroundColor: 'var(--bg-primary)', borderColor: 'var(--border-default)', borderWidth: '1px' }}>
                   
                   {/* Waveform Visualizer */}
                   <div className="w-full h-16 flex items-center justify-center gap-1 my-4">
                     {[30, 60, 40, 90, 70, 100, 45, 80, 60, 95, 30, 85, 50, 75, 40, 90, 65, 30].map((h, i) => (
                       <div
                         key={i}
-                        className={`w-1.5 rounded-full transition-all duration-300 ${
-                          isPlayingAudio ? 'bg-sky-400 animate-pulse' : 'bg-neutral-800'
-                        }`}
+                        className={`w-1.5 rounded-full transition-all duration-300`}
                         style={{
-                          height: isPlayingAudio ? `${Math.min(100, h * (Math.random() * 0.5 + 0.8))}%` : '20%'
+                          height: isPlayingAudio ? `${Math.min(100, h * (Math.random() * 0.5 + 0.8))}%` : '20%',
+                          backgroundColor: isPlayingAudio ? 'var(--accent-primary)' : 'var(--text-muted)',
+                          animation: isPlayingAudio ? 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite' : 'none'
                         }}
                       />
                     ))}
                   </div>
 
-                  <span className="text-xs font-mono text-neutral-400 mb-1">Track: {currentTrack}</span>
-                  <p className="text-xs text-sky-300 font-mono italic mb-6">Synced Lyrics: "Floating in the silence of digital space..."</p>
+                  <span className="text-xs font-mono mb-1" style={{ color: 'var(--text-secondary)' }}>Track: {currentTrack}</span>
+                  <p className="text-xs font-mono italic mb-6" style={{ color: 'var(--accent-primary)' }}>Synced Lyrics: "Floating in the silence of digital space..."</p>
 
                   <div className="flex items-center gap-4">
                     <button
@@ -125,9 +127,10 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                         setIsPlayingAudio(newPlaying);
                         if (newPlaying) soundSynth.playChime(523, 0.05);
                       }}
-                      className="flex items-center gap-2 px-6 py-3 rounded-full bg-sky-400 text-black font-medium text-xs hover:bg-sky-300 transition-colors cursor-pointer"
+                      className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-xs transition-colors cursor-pointer"
+                      style={{ backgroundColor: 'var(--accent-primary)', color: 'var(--bg-primary)' }}
                     >
-                      {isPlayingAudio ? <Pause className="w-4 h-4 fill-black" /> : <Play className="w-4 h-4 fill-black" />}
+                      {isPlayingAudio ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
                       <span>{isPlayingAudio ? 'Pause Audio Pulse' : 'Play Audio Pulse'}</span>
                     </button>
 
@@ -136,7 +139,8 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                         soundSynth.playHoverPop();
                         setCurrentTrack(prev => prev === 'Atmospheric Waves' ? 'Lo-Fi Dhaka Rain' : 'Atmospheric Waves');
                       }}
-                      className="p-3 rounded-full bg-neutral-900 border border-white/10 text-neutral-300 hover:text-white text-xs font-mono"
+                      className="p-3 rounded-full text-xs font-mono transition-colors"
+                      style={{ backgroundColor: 'rgba(0,0,0,0.4)', borderColor: 'var(--border-default)', borderWidth: '1px', color: 'var(--text-secondary)' }}
                     >
                       Switch Track
                     </button>
@@ -163,21 +167,22 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                       className={`p-4 rounded-xl border cursor-pointer transition-all ${
                         selectedBook.includes(book.title)
                           ? 'bg-amber-950/40 border-amber-500/50 text-amber-200'
-                          : 'bg-neutral-950 border-white/5 hover:border-white/20'
+                          : 'border-white/5 hover:border-white/20'
                       }`}
+                      style={!selectedBook.includes(book.title) ? { backgroundColor: 'var(--bg-primary)' } : {}}
                     >
                       <BookOpen className="w-4 h-4 text-amber-400 mb-2" />
-                      <h4 className="text-sm font-medium text-white">{book.title}</h4>
-                      <p className="text-xs text-neutral-400 font-mono">{book.author}</p>
+                      <h4 className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>{book.title}</h4>
+                      <p className="text-xs font-mono" style={{ color: 'var(--text-secondary)' }}>{book.author}</p>
                       <span className="text-[10px] text-amber-400/80 font-mono mt-2 block">{book.genre}</span>
                     </div>
                   ))}
                 </div>
 
-                <div className="p-4 rounded-xl bg-neutral-950 border border-white/10 flex items-center justify-between">
+                <div className="p-4 rounded-xl flex items-center justify-between" style={{ backgroundColor: 'var(--bg-primary)', borderColor: 'var(--border-default)', borderWidth: '1px' }}>
                   <div>
-                    <span className="text-xs font-mono text-neutral-400 block">Selected Title:</span>
-                    <span className="text-sm font-medium text-white">{selectedBook}</span>
+                    <span className="text-xs font-mono block" style={{ color: 'var(--text-secondary)' }}>Selected Title:</span>
+                    <span className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>{selectedBook}</span>
                   </div>
 
                   <button
@@ -192,8 +197,8 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                 </div>
 
                 {sampleOpened && (
-                  <div className="p-5 rounded-xl bg-amber-950/20 border border-amber-500/30 font-serif text-sm text-neutral-200 leading-relaxed italic">
-                    “The evening mist settled over the old town streets. In the quiet courtyard, pages turned slowly under the soft amber light...”
+                  <div className="p-5 rounded-xl bg-amber-950/20 border border-amber-500/30 font-serif text-sm leading-relaxed italic" style={{ color: 'var(--text-primary)' }}>
+                    "The evening mist settled over the old town streets. In the quiet courtyard, pages turned slowly under the soft amber light..."
                   </div>
                 )}
               </div>
@@ -202,13 +207,13 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             {/* 3. SMART PDF READER DEMO */}
             {project.liveDemoType === 'pdfreader' && (
               <div className="space-y-4">
-                <div className="p-5 rounded-xl bg-neutral-950 border border-white/10">
+                <div className="p-5 rounded-xl" style={{ backgroundColor: 'var(--bg-primary)', borderColor: 'var(--border-default)', borderWidth: '1px' }}>
                   <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 mb-2">
                     <FileText className="w-4 h-4" />
                     <span>Sample Research Paper: "Distributed Cloud Systems in South Asia.pdf"</span>
                   </div>
 
-                  <div className="p-3 rounded-lg bg-neutral-900 border border-white/5 text-xs text-neutral-300 font-mono leading-relaxed mb-4">
+                  <div className="p-3 rounded-lg border border-white/5 text-xs font-mono leading-relaxed mb-4" style={{ backgroundColor: 'rgba(0,0,0,0.4)', color: 'var(--text-secondary)' }}>
                     "Cloud network latency in emerging regional nodes can be optimized by 38% using localized caching layers..."
                   </div>
 
@@ -224,12 +229,12 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                       <span>Generate AI Summary</span>
                     </button>
 
-                    <span className="text-xs font-mono text-neutral-500">Bangla Translation Ready</span>
+                    <span className="text-xs font-mono" style={{ color: 'var(--text-muted)' }}>Bangla Translation Ready</span>
                   </div>
 
                   {summaryGenerated && (
                     <div className="mt-4 p-4 rounded-xl bg-cyan-950/30 border border-cyan-500/40 text-xs text-cyan-200 font-mono space-y-1">
-                      <p className="font-semibold text-white">Core Insight Breakdown:</p>
+                      <p className="font-semibold" style={{ color: 'var(--text-primary)' }}>Core Insight Breakdown:</p>
                       <p>• Local caching reduces packet latency significantly.</p>
                       <p>• Edge deployments improve reliability for Bangladeshi developers.</p>
                       <p>• Bangla OCR translation: "ক্লাউড নেটওয়ার্ক লেটেন্সি ৩৮% কমানো সম্ভব।"</p>
@@ -242,7 +247,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             {/* 4. NAFS CONTROL DEMO */}
             {project.liveDemoType === 'nafs' && (
               <div className="space-y-4">
-                <div className="p-5 rounded-xl bg-neutral-950 border border-white/10">
+                <div className="p-5 rounded-xl" style={{ backgroundColor: 'var(--bg-primary)', borderColor: 'var(--border-default)', borderWidth: '1px' }}>
                   <span className="text-xs font-mono text-emerald-400 block mb-3">Daily Discipline Checklist:</span>
                   
                   <div className="space-y-2">
@@ -254,12 +259,14 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                       <div
                         key={item.id}
                         onClick={() => toggleHabit(item.id)}
-                        className="p-3 rounded-xl bg-neutral-900 border border-white/5 hover:border-emerald-500/40 flex items-center justify-between cursor-pointer"
+                        className="p-3 rounded-xl border hover:border-emerald-500/40 flex items-center justify-between cursor-pointer transition-colors"
+                        style={{ backgroundColor: 'rgba(0,0,0,0.4)', borderColor: 'var(--border-default)', borderWidth: '1px', color: 'var(--text-primary)' }}
                       >
-                        <span className="text-xs font-mono text-neutral-200">{item.label}</span>
+                        <span className="text-xs font-mono">{item.label}</span>
                         <div className={`w-5 h-5 rounded-md flex items-center justify-center border ${
                           habitsCompleted[item.id] ? 'bg-emerald-500 border-emerald-400' : 'border-neutral-700'
-                        }`}>
+                        }`}
+                        style={!habitsCompleted[item.id] ? { borderColor: 'var(--text-muted)' } : {}}>
                           {habitsCompleted[item.id] && <CheckCircle2 className="w-3.5 h-3.5 text-black" />}
                         </div>
                       </div>
@@ -272,7 +279,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             {/* 5. RED PARADOX DEMO */}
             {project.liveDemoType === 'redparadox' && (
               <div className="space-y-4">
-                <div className="p-5 rounded-xl bg-neutral-950 border border-white/10">
+                <div className="p-5 rounded-xl" style={{ backgroundColor: 'var(--bg-primary)', borderColor: 'var(--border-default)', borderWidth: '1px' }}>
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-xs font-mono text-rose-400 flex items-center gap-1.5">
                       <Trophy className="w-4 h-4 text-rose-400" />
@@ -282,17 +289,17 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                   </div>
 
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs font-mono">
-                    <div className="p-3 rounded-xl bg-neutral-900 border border-white/5">
-                      <span className="text-white font-semibold block">Rafin (Cap)</span>
-                      <span className="text-neutral-500 text-[10px]">IGL / Strategy</span>
+                    <div className="p-3 rounded-xl border border-white/5" style={{ backgroundColor: 'rgba(0,0,0,0.4)' }}>
+                      <span className="font-semibold block" style={{ color: 'var(--text-primary)' }}>Rafin (Cap)</span>
+                      <span className="text-[10px]" style={{ color: 'var(--text-muted)' }}>IGL / Strategy</span>
                     </div>
-                    <div className="p-3 rounded-xl bg-neutral-900 border border-white/5">
-                      <span className="text-white font-semibold block">Nabil</span>
-                      <span className="text-neutral-500 text-[10px]">Entry Fragger</span>
+                    <div className="p-3 rounded-xl border border-white/5" style={{ backgroundColor: 'rgba(0,0,0,0.4)' }}>
+                      <span className="font-semibold block" style={{ color: 'var(--text-primary)' }}>Nabil</span>
+                      <span className="text-[10px]" style={{ color: 'var(--text-muted)' }}>Entry Fragger</span>
                     </div>
-                    <div className="p-3 rounded-xl bg-neutral-900 border border-white/5">
-                      <span className="text-white font-semibold block">Sami</span>
-                      <span className="text-neutral-500 text-[10px]">Support / Smoke</span>
+                    <div className="p-3 rounded-xl border border-white/5" style={{ backgroundColor: 'rgba(0,0,0,0.4)' }}>
+                      <span className="font-semibold block" style={{ color: 'var(--text-primary)' }}>Sami</span>
+                      <span className="text-[10px]" style={{ color: 'var(--text-muted)' }}>Support / Smoke</span>
                     </div>
                   </div>
                 </div>
@@ -303,13 +310,13 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
 
           {/* Key Features Bullet List */}
           <div>
-            <h3 className="text-xs font-mono text-sky-400 uppercase tracking-widest mb-3">
+            <h3 className="text-xs font-mono uppercase tracking-widest mb-3" style={{ color: 'var(--accent-primary)' }}>
               Core Technical Features
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {project.keyFeatures.map((feat, idx) => (
-                <div key={idx} className="p-3.5 rounded-xl bg-neutral-900/60 border border-white/5 text-xs font-mono text-neutral-300 flex items-start gap-2.5">
-                  <span className="text-sky-400 mt-0.5">✦</span>
+                <div key={idx} className="p-3.5 rounded-xl border border-white/5 text-xs font-mono flex items-start gap-2.5" style={{ backgroundColor: 'rgba(0,0,0,0.4)', color: 'var(--text-secondary)' }}>
+                  <span style={{ color: 'var(--accent-primary)' }}>✦</span>
                   <span>{feat}</span>
                 </div>
               ))}
@@ -317,9 +324,9 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           </div>
 
           {/* Tags */}
-          <div className="flex flex-wrap gap-2 pt-4 border-t border-white/10">
+          <div className="flex flex-wrap gap-2 pt-4" style={{ borderTopColor: 'var(--border-default)', borderTopWidth: '1px' }}>
             {project.tags.map((t) => (
-              <span key={t} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-neutral-400">
+              <span key={t} className="px-3 py-1 rounded-full bg-white/5 text-xs font-mono" style={{ borderColor: 'var(--border-default)', borderWidth: '1px', color: 'var(--text-secondary)' }}>
                 {t}
               </span>
             ))}
@@ -328,8 +335,8 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
         </div>
 
         {/* Footer Actions */}
-        <div className="p-6 border-t border-white/10 bg-neutral-900/80 flex items-center justify-between">
-          <span className="text-xs font-mono text-neutral-500">
+        <div className="p-6 flex items-center justify-between" style={{ borderTopColor: 'var(--border-default)', borderTopWidth: '1px', backgroundColor: 'rgba(0,0,0,0.4)' }}>
+          <span className="text-xs font-mono" style={{ color: 'var(--text-muted)' }}>
             Concept by Ahmed Rafin
           </span>
 
@@ -338,7 +345,8 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
               soundSynth.playHoverPop();
               onClose();
             }}
-            className="px-6 py-2.5 rounded-full bg-white text-black text-xs font-medium hover:bg-sky-200 transition-colors cursor-pointer"
+            className="px-6 py-2.5 rounded-full text-black text-xs font-medium transition-colors cursor-pointer"
+            style={{ backgroundColor: 'var(--text-primary)' }}
           >
             Close Inspector
           </button>

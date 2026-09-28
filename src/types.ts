@@ -8,23 +8,9 @@ export interface Project {
   status: string;
   color: string;
   category: string;
-  featuredVisual: string;
-  fullOverview: string;
+  githubUrl?: string;
+  liveUrl?: string;
   keyFeatures: string[];
-  liveDemoType?: 'beatflow' | 'boibazar' | 'pdfreader' | 'nafs' | 'redparadox';
-}
-
-export interface IdeaItem {
-  id: string;
-  title: string;
-  tagline: string;
-  problem: string;
-  coreIdea: string;
-  solution: string;
-  status: 'Thinking' | 'Exploring' | 'Building' | 'Experimenting' | 'Coming Soon';
-  tags: string[];
-  category: string;
-  updatedAt: string;
 }
 
 export interface TimelineMilestone {
@@ -40,16 +26,39 @@ export interface TimelineMilestone {
 export interface SkillCategory {
   category: string;
   description: string;
+  icon: string;
   skills: {
     name: string;
-    level: 'Foundational' | 'Practicing' | 'Building' | 'Exploring';
-    icon?: string;
+    level: 'Comfortable' | 'Working Knowledge' | 'Learning' | 'Exploring';
   }[];
 }
 
 export interface LearningItem {
   subject: string;
-  stage: 'Exploring' | 'Practicing' | 'Building' | 'Understanding';
+  stage: 'Learning' | 'Exploring';
   focus: string;
-  progressPercentage: number;
+}
+
+export interface AIWorkflowStep {
+  label: string;
+  description: string;
+}
+
+export interface IdeaItem {
+  id: string;
+  title: string;
+  tagline: string;
+  status: 'Building' | 'Exploring' | 'Experimenting' | 'Thinking';
+  category: string;
+  problem: string;
+  coreIdea: string;
+  solution: string;
+  tags: string[];
+}
+
+export interface CurrentlyBuildingItem {
+  name: string;
+  description: string;
+  status: string;
+  url?: string;
 }

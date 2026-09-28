@@ -1,33 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Github, ExternalLink } from 'lucide-react';
 import { PROJECTS } from '../data/portfolioData';
-import { Project } from '../types';
-import { ProjectModal } from './ProjectModal';
 import { soundSynth } from '../utils/soundSynth';
 
 export const ProjectsSection: React.FC = () => {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-
   return (
-    <section id="projects" className="relative z-10 mx-auto max-w-[1400px] px-6 py-32 md:px-16">
+    <section id="projects" className="relative py-32 px-6 md:px-16 max-w-[1400px] mx-auto z-10">
+
       <motion.span
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="label-text mb-20 block text-[#6d7483]"
+        className="label-text mb-20 block"
+        style={{ color: 'var(--text-muted)' }}
       >
         04 / Projects
       </motion.span>
 
-      <div className="mb-20 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+      {/* Header */}
+      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-20">
         <div className="overflow-hidden">
           <motion.h2
             initial={{ y: '100%' }}
             whileInView={{ y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-serif text-[clamp(34px,5.4vw,72px)] leading-[1.05] tracking-[-0.025em] text-white"
+            className="font-serif text-[clamp(36px,5.5vw,72px)] leading-[1.05] tracking-[-0.025em]"
+            style={{ color: 'var(--text-primary)' }}
           >
             What I'm Building
           </motion.h2>
@@ -37,71 +37,127 @@ export const ProjectsSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-xs text-[15px] font-light leading-relaxed text-[#8f95a6]"
+          className="text-[15px] font-light max-w-xs"
+          style={{ color: 'var(--text-secondary)' }}
         >
-          Each project is an exploration into solving a real problem with clarity and craft.
+          Real projects, real problems. Each one taught me something new.
         </motion.p>
       </div>
 
-      <div className="grid gap-5 lg:grid-cols-2">
+      {/* Projects grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {PROJECTS.map((proj, index) => (
-          <motion.article
+          <motion.div
             key={proj.id}
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.8, delay: index * 0.06 }}
-            onClick={() => {
-              setSelectedProject(proj);
-              soundSynth.playChime(523, 0.05);
-            }}
+            transition={{ duration: 0.8, delay: index * 0.1 }}
             onMouseEnter={() => soundSynth.playHoverPop()}
-            className="glass-panel group relative cursor-pointer overflow-hidden rounded-[28px] p-4 sm:p-5"
+            className="group relative flex flex-col p-6 sm:p-7 rounded-2xl border transition-all duration-500 hover:border-[var(--border-hover)]"
+            style={{
+              borderColor: 'var(--border-default)',
+              backgroundColor: 'var(--surface-overlay)',
+            }}
           >
-            <div className="relative overflow-hidden rounded-[22px]">
-              <img
-                src={proj.featuredVisual}
-                alt={proj.title}
-                className="h-56 w-full object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#06070a] via-[#06070a]/40 to-transparent" />
-              <div className="absolute left-4 top-4 rounded-full border border-white/15 bg-black/30 px-3 py-1 text-[11px] uppercase tracking-[0.28em] text-[#dfe3eb] backdrop-blur-xl">
+            {/* Top row: number + status */}
+            <div className="flex items-center justify-between mb-5">
+              <span className="font-serif text-2xl leading-none tracking-tight" style={{ color: 'var(--text-muted)' }}>
                 {proj.number}
-              </div>
+              </span>
+              <span
+                className="text-[10px] font-mono-custom px-2.5 py-1 rounded-full border"
+                style={{ color: 'var(--text-muted)', borderColor: 'var(--border-default)' }}
+              >
+                {proj.status}
+              </span>
             </div>
 
-            <div className="px-1 pb-1 pt-5">
-              <div className="mb-3 flex flex-wrap items-center gap-2">
-                <h3 className="font-serif text-[clamp(20px,3vw,28px)] leading-tight text-white transition-colors duration-500 group-hover:text-[#8b5cf6]">
-                  {proj.title}
-                </h3>
-                <span className="rounded-full border border-white/10 bg-white/8 px-2.5 py-1 text-[11px] uppercase tracking-[0.24em] text-[#aab0bc]">
-                  {proj.category}
+            {/* Title */}
+            <h3 className="font-serif text-xl sm:text-2xl tracking-[-0.02em] leading-tight mb-2 transition-colors duration-500 group-hover:text-[var(--accent-primary)]" style={{ color: 'var(--text-primary)' }}>
+              {proj.title}
+            </h3>
+
+            {/* Category */}
+            <span className="label-text mb-3" style={{ color: 'var(--text-muted)' }}>{proj.category}</span>
+
+            {/* Description */}
+            <p className="text-[13px] font-light leading-relaxed mb-5 flex-1" style={{ color: 'var(--text-secondary)' }}>
+              {proj.description}
+            </p>
+
+            {/* Key features */}
+            <div className="mb-5">
+              {proj.keyFeatures.slice(0, 3).map((feat, i) => (
+                <div key={i} className="flex items-start gap-2 mb-1.5">
+                  <span className="text-[10px] mt-1 shrink-0" style={{ color: 'var(--accent-primary)' }}>✦</span>
+                  <span className="text-[11px] font-light leading-relaxed" style={{ color: 'var(--text-muted)' }}>{feat}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Tags */}
+            <div className="flex flex-wrap gap-1.5 mb-6">
+              {proj.tags.map(t => (
+                <span
+                  key={t}
+                  className="text-[10px] font-mono-custom px-2.5 py-1 rounded-full border"
+                  style={{ color: 'var(--text-muted)', borderColor: 'var(--border-default)' }}
+                >
+                  {t}
                 </span>
-              </div>
-              <p className="mb-4 text-[14px] font-light leading-relaxed text-[#8f95a6]">
-                {proj.description}
-              </p>
-              <div className="mb-5 flex flex-wrap gap-2">
-                {proj.tags.map((t) => (
-                  <span key={t} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-mono-custom text-[#aab0bc]">
-                    {t}
-                  </span>
-                ))}
-              </div>
-              <div className="flex items-center justify-between border-t border-white/10 pt-4 text-sm text-[#c7cad4]">
-                <span className="text-[12px] uppercase tracking-[0.28em] text-[#6d7483]">Open case study</span>
-                <span className="flex items-center gap-2 rounded-full border border-white/10 px-3 py-1.5 text-[12px] transition-all duration-300 group-hover:border-white/20 group-hover:bg-white/8">
-                  View
-                  <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </span>
+              ))}
+            </div>
+
+            {/* Actions */}
+            <div className="flex items-center gap-2 mt-auto pt-4 border-t" style={{ borderColor: 'var(--border-default)' }}>
+              {proj.liveUrl && (
+                <a
+                  href={proj.liveUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  onMouseEnter={() => soundSynth.playHoverPop()}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-[12px] font-medium transition-all duration-300"
+                  style={{
+                    backgroundColor: 'var(--button-primary-bg)',
+                    color: 'var(--button-primary-text)',
+                  }}
+                >
+                  <ExternalLink className="w-3 h-3" />
+                  <span>Live Demo</span>
+                </a>
+              )}
+              {proj.githubUrl && (
+                <a
+                  href={proj.githubUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  onMouseEnter={() => soundSynth.playHoverPop()}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-[12px] border transition-all duration-300"
+                  style={{
+                    color: 'var(--text-secondary)',
+                    borderColor: 'var(--button-secondary-border)',
+                  }}
+                  onMouseOver={(e) => {
+                    (e.currentTarget as HTMLElement).style.color = 'var(--text-primary)';
+                    (e.currentTarget as HTMLElement).style.borderColor = 'var(--border-hover)';
+                  }}
+                  onMouseOut={(e) => {
+                    (e.currentTarget as HTMLElement).style.color = 'var(--text-secondary)';
+                    (e.currentTarget as HTMLElement).style.borderColor = 'var(--button-secondary-border)';
+                  }}
+                >
+                  <Github className="w-3 h-3" />
+                  <span>GitHub</span>
+                </a>
+              )}
+              <div className="ml-auto">
+                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" style={{ color: 'var(--text-muted)' }} />
               </div>
             </div>
-          </motion.article>
+          </motion.div>
         ))}
       </div>
-
-      <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
     </section>
   );
 };
